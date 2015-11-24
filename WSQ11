@@ -1,0 +1,53 @@
+#include <iostream>
+#include "BigIntegerLibrary.hh"
+using namespace std;
+
+int mayor;
+int menor;
+BigInteger R;
+BigInteger Num;
+int Nat=0;
+int NatL=0;
+int LYN=0;
+BigInteger Reverse(BigInteger k){
+BigInteger inv= 0;
+while (k != 0){
+inv= inv*10 + k % 10;
+k= k/10;
+} return inv;
+}
+void Palindrome(BigInteger N, BigInteger R){
+if(N == R){
+Nat = Nat+1; } else {
+int Repetition= 0;
+BigInteger X= N;
+while (X!=R && Repetition < 30){
+X=X+R; R= Reverse(X);
+Repetition= Repetition+1;
+} 
+if (Repetition == 30){
+cout << "un Lynchrel! : " << N << endl;
+LyN= LYN+1;
+} else {
+NatL=NatL+1;
+}
+}
+}
+
+int main (){
+cout << "Hola cómo estas comencemos! ";
+cout << "Escribe número entero el menor: ";
+cin >> menor;
+cout << "Escribe el siguient : número que sera el mayor " ;
+cin >> mayor;
+Num = menor;
+while(Num <= mayor){
+Rev= Reverse(Num);
+Palindrome(Num, R);
+Number = Num + 1; }
+cout << "Los números que colocaste fueron: " << menor << " and: " << mayor << endl;
+cout << "Estos fueron los palindromos naturales: " << Nat << endl;
+cout << "estos fueron los non-lynchers: " << NatL << endl;
+cout << "Estos fueron los Lychers numbers: " << LyN << endl;
+return 0; 
+}
