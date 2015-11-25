@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+float cal(int pre){
+if (pre== 0) return 2;
+float K= 1, m= 1, s=1, F,D;
+int a=1, b;
+while (pre > 0){
+    D=D *0.1;
+    pre--;
+}
+while(s > D){
+    F=1;
+    b=a;
+    while (b>1){
+    F= F*b;
+    b--;
+    }
+    m= m + 1.0/F;
+    s= 1.0/F;
+    a++;
+}
+return s;
+}
+
+int main(){
+int pre;
+int a;
+cout << "Escribe el número de cuantas decimales de e: ";
+cin >>  pre;
+a= pre+1;
+cout << setprecision
+(a) << cal(pre);
+return 0;
+}
