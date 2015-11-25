@@ -1,0 +1,40 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+using namespace std;
+ 
+int main() {
+string Filename= "carritos.dat.txt";
+string Dat, P, H, C;
+float City, Highway, Price, AC= 0.0, AH= 0.0, AP= 0.0;
+ifstream File(Filename);
+if(File.is_open()){
+    cout << "el archivo se abrio"<< endl;
+    for(int i= 0; i<93; i++){
+     getline(File,Dat);
+     P= Dat.substr(42, 4);
+     istringstream Convert(P);
+     Convert >> Price;
+     AP= AP + Price;
+     H= Dat.substr(55, 2);
+     istringstream Convert2(H);
+     Convert2 >> Highway;
+     AH= AH + Highway;
+     C= Dat.substr(52, 2);
+     istringstream Convert3(C);
+     Convert3 >> City;
+     AC= AC + City;
+     getline(File,Dat);
+    }
+File.close();
+AP= AP/93;
+AH= AH/93;
+AC= AC/93;
+cout << "El kilometraje medio de gas en la ciudad de los coches es: " << AC << endl;
+cout << "El kilometraje promedio del gas en la carretera de los coches es: " << AH << endl;
+cout << "El precio promedio de rango medio de los coches es: " << AP << endl;
+}
+else cout << "El archivo no se puede abrir";
+return 0;
+}
